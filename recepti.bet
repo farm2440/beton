@@ -1,0 +1,55 @@
+[B 12,5]
+sand=764
+cement=200
+water=160
+pepelina=0
+fraction=1222
+time=20
+
+[B 12,5 P]
+sand=764
+cement=170
+water=160
+pepelina=100
+fraction=1222
+time=20
+
+[B 20]
+sand=715
+cement=265
+water=198
+pepelina=0
+fraction=1225
+time=20
+
+[B 20 P]
+sand=800
+cement=200
+water=175
+pepelina=100
+fraction=1065
+time=20
+
+[B 25]
+sand=707
+cement=300
+water=198
+pepelina=0
+fraction=1225
+time=20
+
+[B 25 P]
+sand=722
+cement=245
+water=200
+pepelina=120
+fraction=980
+time=20
+
+[B 30]
+sand=690
+cement=340
+water=200
+pepelina=0
+fraction=1205
+time=20

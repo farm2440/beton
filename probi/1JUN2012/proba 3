@@ -1,0 +1,90 @@
+истински бетон за плоча
+пробно един кубик
+
+Exit Settings Menu:
+ 
+AdvScaleCement= 1  AdvScaleSand= 10  AdvScaleFraction= 1  AdvScalePepelina= 1 
+ 
+
+Selected recepie:  "b 30 pump"  for  1  m3 
+Cement= 350  Pepelina= 0  Fraction= 1114  Sand= 755  Water= 190  Time= 40 
+After humidity correction: 
+Sand Humidity: 0 %   Fraction Humidity: 0 
+Fraction= 1114  Sand= 755  Water= 190 
+Mix Number= 2  filled to  62.5 % 
+Ingradients for one mix portion: 
+Cement= 175  Pepelina= 0  Fraction= 557  Sand= 377.5  Water= 95 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 367  retry =  4 
+Writing to fraction scale LIV2= 556  retry =  4 
+Writing to cement scale LIV6= 1740  LIV2= 1740 
+ 
+Writing to TWIDO Water= 95 liters / 321.1  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Sand dose raeched. Actual Value: 390 
+Deviation= -12.5 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 472 
+Deviation= 85 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 183 
+Deviation= -8 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 355  retry =  4 
+
+Writing to fraction scale LIV2= 641  retry =  4 
+
+Writing to cement scale LIV6= 1660  LIV2= 1660 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 388 
+Deviation= -23 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 593 
+Deviation= 49 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 167.5 
+Deviation= -0.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 3 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. repeatValve= 2 
+PHASE=3. Waiting mixer valve to open again 
+STATE:Paused 
+Writing to TWIDO pause flag MW7.8 363 
+STATE:Abort 
+Clear TWIDO pause flag MW7.8 107 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-06-01 11:39:53','2012-06-01 11:47:56', 'b 30 pump',1, 0.0,0.0, 778,1065,350.5,0,194.379, 755,1114,350,0,190, 0,0,1);" 
+ Cycle is over after Abort. 
+STATE:Idle 
+Exit Settings Menu:
+
+
+

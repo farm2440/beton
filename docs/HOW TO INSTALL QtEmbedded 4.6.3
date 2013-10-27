@@ -1,0 +1,323 @@
+документ версия 2 
+
+17 Август 2011
+Добавен автостарт на fluidlauncher
+------------------------------------------------------------
+*** PC ХАРДУЕР/СОФТУЕР ***
+[svilen@asus ~]$ cat /proc/version 
+Linux version 2.6.35.6-45.fc14.i686 
+(mockbuild@x86-16.phx2.fedoraproject.org) 
+(gcc version 4.5.1 20100924 (Red Hat 4.5.1-4) (GCC) ) #1 SMP Mon Oct 18 23:56:17 UTC 2010
+
+[svilen@asus ~]$ cat /etc/redhat-release 
+Fedora release 14 (Laughlin)
+
+------------------------------------------------------------
+*** ИНСТАЛИРАНЕ НА РС ***
+1. Инсталира се крос-компилатора в /usr/local/arm/4.3.2
+ В променливата PATH трябва да има достъп до /usr/local/arm/4.3.2/bin папката. (добавена в ~/.bashrc)
+
+2. Компилира се QtEmbedded 4.6.3 на PC. Резултата от компилирането са библиотеките компилирани
+за ARM (libQtCore.so.4.6.3, libQtGui.so.4.6.3 и т.н) а също и ниструментите за PC като qmake, uic, moc и т.н. Инсталирането става като root
+	3.1 Разархивира се файла arm-qte-463-20100802tar.gz
+	3.2 Влиза се в папката arm-qte-4.6.3 и се стартира скрипта за конфигуриране
+
+./configure -prefix /new_disk/Hiteg/qt/build/ -release -shared -fast -pch -no-qt3support -qt-sql-sqlite -no-libtiff -no-libmng -qt-libjpeg -qt-zlib -qt-libpng -qt-freetype -no-openssl -nomake examples -nomake demos -nomake tools -optimized-qmake -no-phonon -no-nis -no-opengl -no-cups -no-xcursor -no-xfixes -no-xrandr -no-xrender -no-xkb -no-sm -no-xinerama -no-xshape -no-separate-debug-info -xplatform qws/linux-arm-g++ -embedded arm -depths 16 -no-qvfb -qt-gfx-linuxfb -no-gfx-qvfb -no-kbd-qvfb -no-mouse-qvfb-qt-kbd-usb -confirm-license -qt-mouse-tslib
+
+	Опцията -prefix определя къде ще се разположат компилираните вече файлове. В случая това е /new_disk/Hiteg/qt/build/ 
+
+	3.3 Компилиране (отнема повече от час):
+	    $ make (или gmake)
+	    $ make install (или gmake install) 
+
+3. Инсталира се IDE QtCreator (като root)
+На qt-sdk-linux-x86-opensource-2009.05.bin се дава атрибут за изпълнение и файла се стартира.
+
+	LinuxHost>chmod +x qt-sdk-linux-x86-opensource-2009.05.bin
+	LinuxHost>./qt-sdk-linux-x86-opensource-2009.05.bin
+
+4. Конфигуриране на QtCreator - трябва да се зададе пътя към qmake. Инструментът qmake използва проектния файл .pro за да генерира Makefile
+	От Tools-Options-Qt4-QtVersions в QMake location се дава пътя /new_disk/Hiteg/qt/build/bin/qmake и се натиска rebuild
+
+5. Примери - в папката arm-qte-4.6.3/qt-everywhere-opensource-src-4.6.3 има некомпилирани пример. Отваря се .pro файла в QtCreator  и с build се компилира
+
+------------------------------------------------------------
+*** КОНФИГУРИРАНЕ НА FriendlyARM ***
+Новите доставки на FriendlyARM идват с качени библиотеки за QtEmbedded 4.6.3 и tslib. 
+Качва се ядро с вкарана картинка на СТИВ и поддържащо GPIO и SPI - zImage-2.6.32.2-mini2440-gpio-spi-7innch (опция "k"0 и ако платката е от стара доставка се качва файловата система rootfs_qtopia_qt4_20110305.img (опция "y")
+Процедурата е под windows и се ползва dwn инструмента
+след като се калибрира екрана и тръгне qtopia се настройва IP адреса. Първоначално е 192.168.1.230. С командата passwd root се създава парола.
+------------------------------------------------------------
+*** ГЛОБАЛНИ ПРОМЕНЛИВИ ***
+Конфигурират се глобални променливи в FriendlyARM за да могат приложенията да намират библиотеките.
+Глобалните променливи са зададени така, че да се ползват фабрично инсталираните библиотеки на
+QtEmbedded i tslib. Не е необходимо да се качват компилираните библиотеки
+
+ЗАБЕЛЕЖКА: виж fluidlauncher за това как се зареждат автоматично при старт
+
+export USER LOGNAME PS1 PATH
+export QTDIR=/usr/local/Trolltech/QtEmbedded-4.6.3-arm
+export LD_LIBRARY_PATH=$QTDIR/lib
+export TSLIB_CONSOLEDEVICE=none
+export TSLIB_FBDEVICE=/dev/fb0
+export TSLIB_TSDEVICE=/dev/input/event0
+export TSLIB_CALIBFILE=/etc/pointercal
+export TSLIB_CONFFILE=/usr/local/etc/ts.conf
+export QWS_SIZE=800x480
+export QWS_DISPLAY="LinuxFb:mmWidth135:mmHeight155"
+export QWS_MOUSE_PROTO="Tslib:/dev/input/event0"
+export TSLIB_PLUGINDIR=/usr/local/lib/ts
+------------------------------------------------------------
+*** шрифтове **
+прехвърлят се от PC от /new_disk/Hiteg/qt/build/lib/fonts/ шрифтовете 
+на FriendlyARM в /usr/local/Trolltech/QtEmbedded-4.6.3-arm/lib/fonts
+
+(или от /home/svilen/qte463/build/lib/fonts)
+------------------------------------------------------------
+*** TSLIB ***
+При опит за стартиране на Qt4 приложение ако няма връзка към tslibrary библиотеките вади съобщение:
+error while loading shared libraries: libts-0.0.so.0: cannot open shared object file: No such file or directory
+
+Трябва да се направи символна връзка с командата:
+ln -s /usr/local/lib/libts-0.0.so.0 /usr/local/Trolltech/QtEmbedded-4.6.3-arm/lib/libts-0.0.so.0
+Тази команда се дава еднократно
+
+------------------------------------------------------------
+*** КАЛИБРИРАНЕ НА ЕКРАНА ***
+/usr/local/bin/ts_calibrate - стартираи калибриращото приложение от терминала
+//понякога има проблем със стартирането. Калибрирането най-добре да се пусне през qtopia
+------------------------------------------------------------
+*** СТАРТИРАНЕ НА ПРИЛОЖЕНИЕ ***
+за да се стартира приложението не трябва да е пусната средата Qtopia.
+от командния ред на терминала се дава:
+./myapp -qws
+
+------------------------------------------------------------
+*** FLUIDLAUNCHER ***
+Оригинално fluidlauncher и файловете му са в папката /usr/local/Trolltech/QtEmbedded-4.6.3-arm/demos/embedded/fluidlauncher
+Цялата тази папка съм я копирал на SD картата и ползвам това копие. Настройките са във файла config.xml. 
+Там за всяко приложение се задава изпълним файл, име и изображение. 
+
+За да се стартира автоматично fluidlauncher-a се прави файл setenv2440 със съдържание :
+
+#!/bin/sh
+export USER LOGNAME PS1 PATH
+export QTDIR=/usr/local/Trolltech/QtEmbedded-4.6.3-arm
+export LD_LIBRARY_PATH=$QTDIR/lib
+export TSLIB_CONSOLEDEVICE=none
+export TSLIB_FBDEVICE=/dev/fb0
+export TSLIB_TSDEVICE=/dev/input/event0
+export TSLIB_CALIBFILE=/etc/pointercal
+export TSLIB_CONFFILE=/usr/local/etc/ts.conf
+export QWS_SIZE=800x480
+export QWS_DISPLAY="LinuxFb:mmWidth135:mmHeight155"
+export QWS_MOUSE_PROTO="Tslib:/dev/input/event0"
+export TSLIB_PLUGINDIR=/usr/local/lib/ts
+cd /sdcard/fluidlauncher
+./fluidlauncher -qws &
+
+и му се дава атрибут за изпълним.
+ във файла /etc/init.d/rcS со добавя стартиране на горния скрипт и се блокира стартирането на qtopia:
+
+source /etc/init.d/setenv2440                                              
+                                                      
+#/bin/qtopia &                                        
+#echo "                                  " > /dev/tty1
+#echo "Starting Qtopia, please waiting..." > /dev/tty1
+
+------------------------------------------------------------
+*** QWT ***
+	1. сваля се архив на кода от http://sourceforge.net/projects/qwt - qwt-6.0.1.zip
+	2. разархивира се в две директории :
+		/home/svilen/qwt-6.0.1 
+		/home/svilen/qwt-plugin
+
+	3. във файла qwt-6.0.1/qwtconfig.pri се забранява компилирането на QtDesigner и се разрешава компилиране на примерите:
+		######################################################################
+		# If you want to build the Qwt designer plugin, 
+		# enable the line below.
+		# Otherwise you have to build it from the designer directory.
+		######################################################################
+
+		#QWT_CONFIG     += QwtDesigner
+
+		######################################################################
+		# If you want to auto build the examples, enable the line below
+		# Otherwise you have to build them from the examples directory.
+		######################################################################
+	
+		QWT_CONFIG     += QwtExamples
+	4. отваря се от QtCreator файла qwt.pro и се компилира.
+		qwt.pro от  /home/svilen/qwt-6.0.1 се компилира с версия 4.6.3 - за ARM
+		а от /home/svilen/qwt-plugin за х86 с версия 4.6.0
+	5. компилираните библиотеки 
+		/qwt-6.0.1/lib/libqwt.so.6.0.1
+		/qwt-6.0.1/lib/libqwtmathml.so.6.0.1
+	се прехвърлят на FriendlyARM в /usr/local/Trolltech/QtEmbedded-4.6.3-arm/lib/ . 
+	По принцип трябва да са в директорията указана от LD_LIBRARY_PATH.
+	6. на прехвърлените библиотеки се дава изпълним атрибут 
+		chmod a+x libqwt*
+	7.създават  се символни връзки
+		ln -s libqwt.so.6.0.1 libqwt.so.6.0
+		ln -s libqwt.so.6.0.1 libqwt.so.6
+		ln -s libqwt.so.6.0.1 libqwt.so
+		ln -s libqwtmathml.so.6.0.1 libqwtmathml.so.6.0
+		ln -s libqwtmathml.so.6.0.1 libqwtmathml.so.6
+		ln -s libqwtmathml.so.6.0.1 libqwtmathml.so
+	8. примерите от qwt-6.0.1/examples/ могат да се прехвърлят на FriendlyARM и да се стартират с -qws опция
+
+
+   _______ИНТЕГРИРАНЕ В QtCreator:
+ 	Копира се qwt-plugin/designer/plugins/designer/libqwt_designer_plugin.so в /opt/qtsdk-2009.05/bin/designer/
+
+	в /etc/ld.so.conf.d се създава файл qwt.conf със съдържание един ред:		
+		/home/svilen/QtEmbeddedFiles/qwt-plugin/lib
+
+	дава се команда 
+		sudo ldconfig
+		sudo ldconfig -p | grep qwt
+
+------------------------------------------------------------
+**** Qt Embedded Widgets ****
+
+1. инсталира се doxygen на РС през  Synaptic Package Manager
+2. файла qt_embedded-widgets-1.1.0.tar.gz се разархивира
+3. компилиране 
+ От QtCreator отварям проекта  embedded-widgets-1.1.0/qtembeddedwidgets.pro и давам "build all"
+
+4. Компилиране на документацията
+ $ cd embedded-widgets-1.1.0
+ $ doxygen Doxyfile
+
+документацията е в embedded-widgets-1.1.0/doc/html/index.html
+
+
+*** Използване на компонентите ***
+от INSTALL.TXT е дадено това описание:
+Using a component in your project:
+
+The directory your-install-dir/src includes all the source code for the
+component. To use this component in your project:
+
+1.  Add the following line
+
+	include(your-install-dir/src/some-package.pri)
+
+    to the project's .pro file.
+
+2.  Run qmake on the project's .pro file.
+
+This adds the package's sources and headers to the SOURCES and HEADERS
+qmake variables respectively, and update INCLUDEPATH to contain the
+package's src directory. Additionally, the .pri file may include some
+dependencies needed by the package.
+
+To include a header file from the package in your sources, you can now
+simply use:
+
+    #include <some-package.h>
+
+
+ИЗПРОБВАНО:
+В .pro файла добавено
+include(/home/svilen/qt4install/embedded-widgets-1.1.0/src/common/common.pri)
+include(/home/svilen/qt4install/embedded-widgets-1.1.0/src/svgslideswitch/svgslideswitch.pri)
+
+В демото са добавили и това:
+RESOURCES += \
+    /home/svilen/qt4install/embedded-widgets-1.1.0/skins/beryl_svgslideswitch.qrc 
+но моя проект се компилира и без него
+
+Във mainwindow.cpp добавих     #include "qtsvgslideswitch.h"
+
+Взех от patientcare демото с копи-пейст от формата уйджета svgslideswitch и го сложих на моя форма.
+Бутона не се появи на формата т.к. не е инициализиран
+--------------------------------------------------------------------
+SQLITE
+
+в sqlite-arm има готови компилирани за friendlyArm файлове.
+
+Steps to cross compile the sqlite-3.7.0
+1) Download the sqlite-amalgamation-3.7.0.tar file using tar command.
+2) Extract the tar file to usr directory
+3) Cross compiler is located in usr/local/
+4) CD to the exrtracted sqlite-3.7.0
+5) Enter the following command 
+./configure --host=arm-linux \
+CFLAGS="-march=armv4t -mtune=arm920t -Os -lpthread -lrt" LDFLAGS=${LDFLAGS}
+
+6) Enter make
+   At first it will give an error. To remove this error edit the make file 
+and find the string -DPACKAGE_STRING. It will be assigned to \ sqlite \
+3.7.0. i.e(-DPACKAGE_STRING = \ sqlite \ 3.7.0. \ ) changed it to
+-DPACKAGE_STRING = \ sqlite-3.7.0 \  and save the make file
+
+
+7) Type make
+8) make install DESTDIR={path to the destination directory}
+example: $ make install DESTDIR=/home/svilen/sqlite-arm
+
+9)Copy the cross compiled file in DESTDIR to required directories in board
+
+Copy the files from zip to /usr/bin, usr/lib (тази директория я няма. трябва да се създаде!)
+You must make links for the lib files - execute the commands
+ln -s /usr/local/lib/libsqlite3.so.0.8.6 /lib/libsqlite3.so.0
+ln -s /usr/local/lib/libsqlite3.so.0.8.6 /lib/libsqlite3.so
+
+I simply copied the libsqlite* files from /usr/local/lib to /usr/lib & to /lib
+Setting LD_LIBRARY_PATH explicitly to the path of libsqlite* also solves the problem...
+
+[root@FriendlyARM /sdcard]# ls /usr/local/lib/
+libQtSql.so          libsqlite3.a         libts-0.0.so.0
+libQtSql.so.4        libsqlite3.so        libts-0.0.so.0.1.1
+libQtSql.so.4.6      libsqlite3.so.0      libts.so
+libQtSql.so.4.6.3    libsqlite3.so.0.8.6  ts
+
+10)SQLITE will run
+------------------------------------------------------------------
+*** ПОДМЯНА НА fluidlauncher с мое qt4.6.3 приложение ******
+РЕдактира се файла /bin/qt4 като се добавят :
+
+1:след  "export QWS_DISPLAY=:1" редовете:
+
+export USER LOGNAME PS1 PATH
+export QTDIR=/usr/local/Trolltech/QtEmbedded-4.6.3-arm
+export LD_LIBRARY_PATH=$QTDIR/lib
+export TSLIB_CONSOLEDEVICE=none
+export TSLIB_FBDEVICE=/dev/fb0
+export TSLIB_TSDEVICE=/dev/input/event0
+export TSLIB_CALIBFILE=/etc/pointercal
+export TSLIB_CONFFILE=/usr/local/etc/ts.conf
+export QWS_SIZE=800x480
+export QWS_DISPLAY="LinuxFb:mmWidth135:mmHeight155"
+export QWS_MOUSE_PROTO="Tslib:/dev/input/event0"
+export TSLIB_PLUGINDIR=/usr/local/lib/ts 
+
+2:Подменя се викането на fluidlauncher:
+
+
+#cd /usr/local/Trolltech/QtEmbedded-4.6.3-arm/demos/embedded/fluidlauncher
+#./fluidlauncher -qws
+
+cd /usr/local/Trolltech/QtEmbedded-4.6.3-arm/demos/deform/
+./etherino -qws
+
+
+
+--------------------------------------------------------------
+*** ВРЪЗКИ В ИНТЕРНЕТ ***
+http://www.youtube.com/watch?v=CyAWVxavO3w&feature=autoplay&list=FLkGnSo7f1lXWTkhZpXSWHiA&lf=mh_lolz&playnext=1
+http://linux-arm-porting.blogspot.com/2009/12/qt-application-development-on-mini2440.html
+http://doc.qt.nokia.com/4.7-snapshot/qmake-tutorial.html
+http://www.digitalfanatics.org/projects/qt_tutorial/chapter11.html
+http://www.andahammer.com/downloads/
+http://www.360doc.com/content/10/0527/21/971672_29865027.shtml
+http://www.friendlyarm.net/forum/topic/2097
+http://www.electronics.diycinema.co.uk/embedded/mini2440/qt-embedded-4-6-0-qwt-kxps5-accelerometer/
+http://www.civilnet.cn/book/embedded/GUI/Qt_assistant/demos-embedded-fluidlauncher-config-xml.html
+
+CrossWorks for ARM
+http://www.rowley.co.uk/arm/index.htm
+
+Качване на андроид:
+http://mini2440.spaceopera.org/site/developmentenviroment/stepbystep/index.html

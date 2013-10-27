@@ -1,0 +1,94 @@
+HumidityChanged! 
+Sand Humidity: 9.1 %   Fraction Humidity: 5 
+New values will take part in next recepie selection.
+ 
+
+Selected recepie:  "b 12,5"  for  0.5  m3 
+Cement= 200  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 20 
+After humidity correction: 
+Sand Humidity: 9.1 %   Fraction Humidity: 5 
+Fraction= 1373.68  Sand= 840.484  Water= 14.8317 
+Mix Number= 2  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 50  Pepelina= 0  Fraction= 343.421  Sand= 210.121  Water= 3.70794 
+ 
+
+HumidityChanged! 
+Sand Humidity: 11 %   Fraction Humidity: 7 
+New values will take part in next recepie selection.
+ 
+
+Selected recepie:  "b 12,5"  for  0.5  m3 
+Cement= 200  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 20 
+After humidity correction: 
+Sand Humidity: 11 %   Fraction Humidity: 7 
+Fraction= 1403.23  Sand= 858.427  Water= -32.6528 
+Mix Number= 2  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 50  Pepelina= 0  Fraction= 350.806  Sand= 214.607  Water= 2 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 139  retry =  4 
+Writing to fraction scale LIV2= 194  retry =  4 
+Writing to cement scale LIV6= 490  LIV2= 490 
+ 
+Writing to TWIDO Water= 2 liters / 6.76  pulses Time= 20 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Sand dose raeched. Actual Value: 221 
+Deviation= -6.39326 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 174 
+Deviation= 176.806 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 51.5 
+Deviation= -1.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 133  retry =  4 
+
+Writing to sand scale LIV2= 133  retry =  3 
+
+Writing to fraction scale LIV2= 371  retry =  4 
+
+Writing to cement scale LIV6= 470  LIV2= 470 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 209 
+Deviation= -0.786517 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 58.5 
+Deviation= -10 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 275 
+Deviation= 252.613 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+PHASE=4. Waiting mixer valve to close... 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-05-29 10:38:06','2012-05-29 10:40:22', 'b 12,5',0.5, 11.0,7.0, 430,449,110,0,2.66272, 382,652.5,100,0,80, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

@@ -1,0 +1,12 @@
+Проба с рецепта без ццемент. 
+Първа проба след като в проба 3 успешно се завърши цикъла
+
+beton.ini :
+MixerVolume=0.3
+DumpTime=60
+
+AdvScaleCement=1
+AdvScaleSand=75
+AdvScaleFraction=50
+AdvScalePepelina=1
+

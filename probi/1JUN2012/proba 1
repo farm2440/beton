@@ -1,0 +1,124 @@
+proba bez cement
+
+
+Exit Settings Menu:
+ 
+AdvScaleCement= 1  AdvScaleSand= 1  AdvScaleFraction= 1  AdvScalePepelina= 1 
+ 
+
+Selected recepie:  "d 0,5"  for  1  m3 
+Cement= 14  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 40 
+After humidity correction: 
+Sand Humidity: 0 %   Fraction Humidity: 0 
+Fraction= 1305  Sand= 764  Water= 160 
+Mix Number= 2  filled to  62.5 % 
+Ingradients for one mix portion: 
+Cement= 7  Pepelina= 0  Fraction= 652.5  Sand= 382  Water= 80 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 381  retry =  4 
+Writing to fraction scale LIV2= 651  retry =  4 
+Writing to cement scale LIV6= 60  LIV2= 60 
+ 
+Writing to TWIDO Water= 80 liters / 270.4  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Cement dose raeched. Actual Value: 6.5 
+Deviation= 0.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Sand dose raeched. Actual Value: 409 
+Deviation= -27 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 585 
+Deviation= 67.5 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 2 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 2 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 2 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 2 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 354  retry =  4 
+
+Writing to fraction scale LIV2= 719  retry =  4 
+
+Writing to fraction scale LIV2= 719  retry =  3 
+
+Writing to cement scale LIV6= 60  LIV2= 60 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 386 
+Deviation= -31 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 16 
+Deviation= -8.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 709 
+Deviation= 11 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 3 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. repeatValve= 2 
+PHASE=3. Waiting mixer valve to open again 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close to finish... 
+Mixer valve is closed. repeatValve= 0 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-06-01 11:12:15','2012-06-01 11:22:24', 'd 0,5',1, 0.0,0.0, 795,1294,22.5,0,164.201, 764,1305,14,0,160, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

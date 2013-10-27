@@ -1,0 +1,50 @@
+Проба само с едно бъркало
+
+
+
+Selected recepie:  "d 0,5"  for  0.3  m3 
+Cement= 14  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 40 
+After humidity correction: 
+Sand Humidity: 0 %   Fraction Humidity: 0 
+Fraction= 1305  Sand= 764  Water= 160 
+Mix Number= 1  filled to  100 % 
+Ingradients for one mix portion: 
+Cement= 4.2  Pepelina= 0  Fraction= 391.5  Sand= 229.2  Water= 48 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 154  retry =  4 
+Writing to fraction scale LIV2= 341  retry =  4 
+Writing to cement scale LIV6= 30  LIV2= 30 
+ 
+Writing to TWIDO Water= 48 liters / 162.24  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Cement dose raeched. Actual Value: 7 
+Deviation= -2.8 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Sand dose raeched. Actual Value: 208 
+Deviation= 21.2 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 276 
+Deviation= 115.5 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close to finish... 
+Mixer valve is closed. repeatValve= 0 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-05-29 15:14:40','2012-05-29 15:17:50', 'd 0,5',0.3, 0.0,0.0, 208,276,7,0,50, 229.2,391.5,4.2,0,48, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

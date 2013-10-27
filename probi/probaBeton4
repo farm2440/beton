@@ -1,0 +1,106 @@
+Проба с рецепта без ццемент. 
+Цикъла завършва успешно.
+Добавен флаг за пауза WM7.8 който се пише в туйдо.
+Водата се чете сумирано от туйдо MW8
+------------------------------
+
+beton.ini :
+MixerVolume=0.3
+DumpTime=60
+
+AdvScaleCement=1
+AdvScaleSand=75
+AdvScaleFraction=50
+AdvScalePepelina=1
+------------------------------
+
+Selected recepie:  "d 0,5"  for  0.5  m3 
+Cement= 14  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 40 
+After humidity correction: 
+Sand Humidity: 0 %   Fraction Humidity: 0 
+Fraction= 1305  Sand= 764  Water= 160 
+Mix Number= 2  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 3.5  Pepelina= 0  Fraction= 326.25  Sand= 191  Water= 40 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 116  retry =  4 
+Writing to fraction scale LIV2= 276  retry =  4 
+Writing to cement scale LIV6= 20  LIV2= 20 
+ 
+Writing to TWIDO Water= 40 liters / 135.2  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Sand dose raeched. Actual Value: 204 
+Deviation= -13 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 8.5 
+Deviation= -5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 196 
+Deviation= 130.25 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+STATE:Paused 
+Writing to TWIDO pause flag MW7.8 363 
+STATE:Run 
+Clear TWIDO pause flag MW7.8 107 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 103  retry =  4 
+
+Writing to sand scale LIV2= 103  retry =  3 
+
+Writing to fraction scale LIV2= 406  retry =  4 
+
+Writing to cement scale LIV6= 0  LIV2= 0 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 211 
+Deviation= -33 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 12 
+Deviation= -13.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 317 
+Deviation= 139.5 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 3 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. repeatValve= 2 
+PHASE=3. Waiting mixer valve to open again 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close to finish... 
+Mixer valve is closed. repeatValve= 0 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-05-29 14:32:45','2012-05-29 14:38:46', 'd 0,5',0.5, 0.0,0.0, 415,513,20.5,0,42.3077, 382,652.5,7,0,80, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+Failed reading TWIDO or CRC error! 
+
+fail=true. failCounter= 0 
+
+
+
+

@@ -1,0 +1,36 @@
+/usr/local/bin/sqlite3 beton.db
+
+CREATE TABLE log
+(
+   StartTime DATETIME,
+   EndTime DATETIME,
+
+   Name VARCHAR(30),
+   Quantity DOUBLE,
+
+   SandHumidity DOUBLE,
+   FracHumidity DOUBLE,
+
+   Sand INT,
+   Fraction INT,
+   Cement INT,
+   Pepelina INT,
+   Water INT,
+
+   OrgSand INT,
+   OrgFraction INT,
+   OrgCement INT,
+   OrgPepelina INT,
+   OrgWater INT,
+
+   CorrectionDry INT,
+   CorrectionWater INT,
+   Status INT
+);
+
+INSERT INTO log VALUES ('2012-04-10 10:10:10', '2012-04-10 20:10:10' , 'B1', 5.5,  2.1,1.5, 400,1200,200,150,250,  400,1200,200,150,250,  1,0,0);
+
+INSERT INTO log VALUES ('2012-04-12 16:10:10', '2012-04-12 23:10:10' ,    'B3', 9.8,  1,3, 350,1200,200,150,250,  350,1200,200,150,250,  1,0,2);
+INSERT INTO log VALUES ('2012-04-30 11:29:49', '2012-04-30 11:29:49', 'b 12,5', 9,0,  0,0, 0,   0,   0,  0,           6876,10998);"
+
+select * from log where StartTime >= '2012-04-28 17:41:47' and EndTime <= '2012-04-28 17:43:05';

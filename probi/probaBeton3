@@ -1,0 +1,93 @@
+Добавена корекция в алгоритъма за клапата за завършване на цикъла (с case)
+Пробата е нормално завършена
+
+beton.ini :
+MixerVolume=0.3
+DumpTime=60
+
+AdvScaleCement=1
+AdvScaleSand=75
+AdvScaleFraction=50
+AdvScalePepelina=1
+
+
+
+
+Selected recepie:  "b 12,5"  for  0.4  m3 
+Cement= 200  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 40 
+After humidity correction: 
+Sand Humidity: 4.3 %   Fraction Humidity: 1.2 
+Fraction= 1320.85  Sand= 798.328  Water= 109.822 
+Mix Number= 2  filled to  66.6667 % 
+Ingradients for one mix portion: 
+Cement= 40  Pepelina= 0  Fraction= 264.17  Sand= 159.666  Water= 21.9643 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 84  retry =  4 
+Writing to fraction scale LIV2= 214  retry =  4 
+Writing to cement scale LIV6= 390  LIV2= 390 
+ 
+Writing to TWIDO Water= 21.9643 liters / 74.2395  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Fraction dose raeched. Actual Value: 281 
+Deviation= -16.83 
+Writing to TWIDO flag MW7.1  
+
+Sand dose raeched. Actual Value: 196 
+Deviation= -36.3344 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 45 
+Deviation= -5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 48  retry =  4 
+
+Writing to fraction scale LIV2= 197  retry =  4 
+
+Writing to cement scale LIV6= 340  LIV2= 340 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 123 
+Deviation= 0.331243 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 39 
+Deviation= -4 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 183 
+Deviation= 64.3401 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 3 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. repeatValve= 2 
+PHASE=3. Waiting mixer valve to open again 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close to finish... 
+Mixer valve is closed. repeatValve= 0 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-05-29 12:15:36','2012-05-29 12:21:28', 'b 12,5',0.4, 4.3,1.2, 319,464,84,0,23.9645, 305.6,522,80,0,64, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

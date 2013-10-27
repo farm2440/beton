@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/wheel-0.png</file>
+        <file>res/wheel-45.png</file>
+        <file>res/wheel-90.png</file>
+        <file>res/wheel-135.png</file>
+        <file>res/wheel-180.png</file>
+        <file>res/wheel-225.png</file>
+        <file>res/wheel-270.png</file>
+        <file>res/wheel-315.png</file>
+        <file>res/shnek-h-1.png</file>
+        <file>res/shnek-h-2.png</file>
+        <file>res/shnek-h-3.png</file>
+        <file>res/shnek-h-4.png</file>
+        <file>res/shnek-h-5.png</file>
+        <file>res/shnek-h-6.png</file>
+        <file>res/shnek-h-7.png</file>
+        <file>res/waterV0.png</file>
+        <file>res/waterV1.png</file>
+        <file>res/waterV2.png</file>
+        <file>res/waterV3.png</file>
+        <file>res/waterV4.png</file>
+        <file>res/waterV5.png</file>
+        <file>res/waterV6.png</file>
+        <file>res/nowater.png</file>
+        <file>res/background.bmp</file>
+        <file>res/green-dot.png</file>
+        <file>res/logo.png</file>
+    </qresource>
+</RCC>

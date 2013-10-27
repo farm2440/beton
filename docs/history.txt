@@ -1,0 +1,23 @@
+27 AUG 2012
+Отстранен проблем с неправилно задаване на нивото LIV6 за пепелина на втори цикъл.
+
+mainwindow.cpp :
+ред 1293 - в Phase 6 :
+
+LIV6 = currentRecepie.MixPepelina - globals.AdvScalePepelina + currentRecepie.DevPepelina;
+LIV6 *= globals.CementLIV6multi;
+LIV6 += LIV2; <корекция
+
+
+ред 818 - Case Start
+if(currentRecepie.MixPepelina==0) LIV6 = LIV2;
+else
+{
+    LIV6 = currentRecepie.MixCement  - globals.AdvScaleCement + currentRecepie.MixPepelina - globals.AdvScalePepelina; < корекция
+    LIV6 *= globals.CementLIV6multi;
+}
+
+
+03 SEP 2012
+Добавена корекция на пепелина ниво LIV6 и запис във везната след достигане на нивото на цемента.
+Така се отчита точното количество цемент в бункера от което започва сипването на пепелината

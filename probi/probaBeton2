@@ -1,0 +1,91 @@
+Добавена корекция в алгоритъма за клапата за завършване на цикъла
+
+beton.ini :
+MixerVolume=0.3
+DumpTime=60
+
+AdvScaleCement=1
+AdvScaleSand=75
+AdvScaleFraction=50
+AdvScalePepelina=1
+
+
+HumidityChanged! 
+Sand Humidity: 5 %   Fraction Humidity: 1.6 
+New values will take part in next recepie selection.
+ 
+
+Selected recepie:  "b 12,5"  for  0.5  m3 
+Cement= 200  Pepelina= 0  Fraction= 1305  Sand= 764  Water= 160  Time= 20 
+After humidity correction: 
+Sand Humidity: 5 %   Fraction Humidity: 1.6 
+Fraction= 1326.22  Sand= 804.211  Water= 98.57 
+Mix Number= 2  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 50  Pepelina= 0  Fraction= 331.555  Sand= 201.053  Water= 24.6425 
+ 
+STATE:Start 
+
+Writing to sand scale LIV2= 126  retry =  4 
+Writing to fraction scale LIV2= 281  retry =  4 
+Writing to cement scale LIV6= 490  LIV2= 490 
+ 
+Writing to TWIDO Water= 24.6425 liters / 83.2916  pulses Time= 20 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Sand dose raeched. Actual Value: 212 
+Deviation= -10.9474 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 229 
+Deviation= 102.555 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 69 
+Deviation= -19 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 115  retry =  4 
+
+Writing to fraction scale LIV2= 384  retry =  4 
+
+Writing to cement scale LIV6= 300  LIV2= 300 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 210 
+Deviation= -19.8947 
+Writing to TWIDO  flag MW7.3  
+
+Cement dose raeched. Actual Value: 51.5 
+Deviation= -20.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+
+Fraction dose raeched. Actual Value: 344 
+Deviation= 90.1098 
+Writing to TWIDO flag MW7.1  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-05-29 11:30:28','2012-05-29 11:32:48', 'b 12,5',0.5, 5.0,1.6, 422,573,120.5,0,0, 382,652.5,100,0,80, 0,0,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

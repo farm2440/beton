@@ -1,0 +1,14 @@
+#!/bin/sh
+export USER LOGNAME PS1 PATH
+export QTDIR=/usr/local/Trolltech/QtEmbedded-4.6.3-arm
+export LD_LIBRARY_PATH=$QTDIR/lib
+export TSLIB_CONSOLEDEVICE=none
+export TSLIB_FBDEVICE=/dev/fb0
+export TSLIB_TSDEVICE=/dev/input/event0
+export TSLIB_CALIBFILE=/etc/pointercal
+export TSLIB_CONFFILE=/usr/local/etc/ts.conf
+export QWS_SIZE=800x480
+export QWS_DISPLAY="LinuxFb:mmWidth135:mmHeight155"
+export QWS_MOUSE_PROTO="Tslib:/dev/input/event0"
+export TSLIB_PLUGINDIR=/usr/local/lib/ts
+

@@ -1,0 +1,154 @@
+два кубика - край на първия камион
+
+
+ERROR!: Failed reading cement scale. MSG: "scale_getResponse: Connection timeout" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading cement scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+Exit Settings Menu:
+ 
+AdvScaleCement= 1  AdvScaleSand= 10  AdvScaleFraction= 1  AdvScalePepelina= 1 
+ 
+
+Selected recepie:  "b 20"  for  2  m3 
+Cement= 265  Pepelina= 0  Fraction= 1225  Sand= 715  Water= 198  Time= 40 
+After humidity correction: 
+Sand Humidity: 0 %   Fraction Humidity: 0 
+Fraction= 1225  Sand= 715  Water= 198 
+Mix Number= 3  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 176.667  Pepelina= 0  Fraction= 816.667  Sand= 476.667  Water= 132 
+ 
+ERROR!: Failed reading fraction scale. MSG: "scale_getResponse: Connection timeout" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading fraction scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading sand scale. MSG: "scale_getResponse: Connection timeout" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading sand scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+ERROR!: Failed reading cement scale. MSG: "scale_getResponse: Connection timeout" 
+
+fail=true. failCounter= 0 
+ERROR!: Failed reading cement scale. MSG: "scale_ParseWeight: Incorrect response length" 
+
+fail=true. failCounter= 1 
+
+Dry ingradients quantity changed! 
+
+Water quantity changed! 
+Recalculating ingradients: 
+Selected recepie:  "b 20"  for  2  m3 
+Cement= 265  Pepelina= 0  Fraction= 1225  Sand= 715  Water= 198  Time= 40 
+After manual correction: 
+Cement= 265  Pepelina= 0  Fraction= 1100  Sand= 835  Water= 130  Time= 40 
+Mix Number= 3  filled to  83.3333 % 
+Ingradients for one mix portion: 
+Cement= 176.667  Pepelina= 0  Fraction= 733.333  Sand= 556.667  Water= 86.6667 
+STATE:Start 
+
+Writing to sand scale LIV2= 546  retry =  4 
+Writing to fraction scale LIV2= 732  retry =  4 
+Writing to cement scale LIV6= 1750  LIV2= 1750 
+ 
+Writing to cement scale LIV6= 1750  LIV2= 1750 
+ 
+Writing to TWIDO Water= 86.6667 liters / 292.933  pulses Time= 40 
+Writing to TWIDO start flag MW7.0 1 
+Writing to TWIDO DumpTime MW3= 60 
+STATE:Run  Phase=0. Waiting scales to reach dose levels... 
+
+Sand dose raeched. Actual Value: 561 
+Deviation= -4.33333 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 720 
+Deviation= 13.3333 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 188 
+Deviation= -11.3333 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 2 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 542  retry =  4 
+
+Writing to fraction scale LIV2= 745  retry =  4 
+
+Writing to cement scale LIV6= 1640  LIV2= 1640 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 2 
+
+Sand dose raeched. Actual Value: 565 
+Deviation= -12.6667 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 731 
+Deviation= 15.6667 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 177 
+Deviation= -11.6667 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=5 MixLeft= 1 
+
+PHASE=6 
+
+Writing to sand scale LIV2= 533  retry =  4 
+
+Writing to fraction scale LIV2= 748  retry =  4 
+
+Writing to cement scale LIV6= 1630  LIV2= 1630 
+
+Writing to cement scale LIV6= 1630  LIV2= 1630 
+Writing to TWIDO. Clear MW7 bits 1,3,5 and 6 
+PHASE=0 MixLeft= 1 
+
+Sand dose raeched. Actual Value: 544 
+Deviation= -1.13687e-13 
+Writing to TWIDO  flag MW7.3  
+
+Fraction dose raeched. Actual Value: 688 
+Deviation= 61 
+Writing to TWIDO flag MW7.1  
+
+Cement dose raeched. Actual Value: 164.5 
+Deviation= 0.5 
+Writing to TWIDO start flag MW7.6  
+
+Pepelina dose raeched. Actual Value: 0 
+Deviation= 0 
+Writing to TWIDO start flag MW7.5  
+PHASE=1 
+PHASE=3 MixLeft=0. Waiting mixer valve to open... 
+Mixer valve is open. repeatValve= 3 
+PHASE=4. Waiting mixer valve to close 
+Mixer valve is closed. repeatValve= 2 
+PHASE=3. Waiting mixer valve to open again 
+Mixer valve is open. repeatValve= 1 
+PHASE=4. Waiting mixer valve to close to finish... 
+Mixer valve is closed. repeatValve= 0 
+
+Database operation: 
+"INSERT INTO log VALUES ('2012-06-01 12:12:40','2012-06-01 12:23:48', 'b 20',2, 0.0,0.0, 1670,2139,529.5,0,266.272, 1430,2450,530,0,396, 1,1,0);" 
+ Cycle is over. Normal exit. 
+STATE:Idle 
+

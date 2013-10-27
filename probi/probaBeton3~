@@ -1,0 +1,11 @@
+Добавена корекция в алгоритъма за клапата за завършване на цикъла (с case)
+
+beton.ini :
+MixerVolume=0.3
+DumpTime=60
+
+AdvScaleCement=1
+AdvScaleSand=75
+AdvScaleFraction=50
+AdvScalePepelina=1
+
