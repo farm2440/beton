@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :    QMainWindow(parent),    ui(new Ui::
     qDebug() <<   "* Compiler: gcc-4.3.2                          *" ;
     qDebug() <<   "* QtVersion: Qt 4.6.3                          *" ;
     qDebug() <<   "* Platform: FriendlyARM mini2440               *" ;
-    qDebug() <<   "* Author: Svilen Stavrev svilen@etherino.net   *" ;
     qDebug() <<   "************************************************\n" ;
 
 
